@@ -25,10 +25,12 @@ public class TCRPreloadingEntrypoint implements PreloadingEntrypoint {
                     LOGGER.warn("GLVersion < 4.6, acceleratedrendering mod has been removed.");
                 }
             }
-            if(modManager.removeById("yes_steve_model")){
+            if(modManager.getById("epicfight") != null && modManager.removeById("yes_steve_model")){
                 LOGGER.warn("Incompatible with epic fight, yes_steve_model mod has been removed.");
             }
-            modManager.removeByIds(Set.of("projecte"));
+            if(modManager.getById("tcrcore") != null) {
+                modManager.removeByIds(Set.of("projecte"));
+            }
         });
     }
 
